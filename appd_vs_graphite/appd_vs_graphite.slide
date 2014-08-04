@@ -73,7 +73,7 @@ AppDynamics is an Enterprise-level software solution that can provide monitoring
 - All metrics are sent over UDP which is typically fast and non-blocking
 - Metrics can have resolution down to one second
 - Metrics types (gauges, timers and counters) are almost self-documenting in purpose
-- Built-in mathamatical functions can be applied to metrics data flexibly
+- Built-in mathematical functions can be applied to metrics data flexibly
 
 * Custom metrics in Graphite - The Cons
 
