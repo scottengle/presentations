@@ -1,0 +1,118 @@
+AppDynamics vs. Graphite
+Is AppDynamics a suitable replacement?
+
+Scott Engle
+4 August 2014
+Software Engineer, Pearson eCollege
+scott.engle@pearson.com
+@ScottEAtWork
+
+* Background
+
+I attended [[http://www.gluecon.com/2013/][Gluecon]] in 2013, where [[https://www.appdynamics.com/][AppDynamics]] had a booth. I asked for a tour of their software and I realized that AppDynamics had many features that we didn't have available to us at the office.
+
+* The Question
+
+There is a feature within AppDynamics, which, when enabled, will allow you to send custom metrics to the AppDynamics graphing engine. 
+
+The question that I asked for my 'Dev Day' was:
+
+_"if_you_have_access_to_AppDynamics,_do_you_still_need_Graphite_for_instrumentation?"_
+
+* AppDynamics Overview - The Pros
+
+AppDynamics is an Enterprise-level software solution that can provide monitoring, alerting and architecture discovery.
+
+- Can be set up as SaaS, or self-hosted ("on-premise")
+- Can dynamically discover application architecture and how a user flows through the system
+- Several pre-made extensions are available for popular tools/technologies, such as Cassandra, Redis and PagerDuty: [[http://community.appdynamics.com/t5/AppDynamics-eXchange/idb-p/extensions][AppDynamics Exchange]]
+- Fairly easy to set up, even for such a large software solution
+- HTTP Listener end-points can be enabled on each client, letting you send custom metrics through the client to the controller
+
+* AppDynamics Overview - The Cons
+
+AppDynamics is an Enterprise-level software solution that can provide monitoring, alerting and architecture discovery.
+
+- License fees are prohibitive and are based on the number of agents installed (one per server)
+- The controller software is resource intensive
+
+* Graphite Overview - The Pros
+
+[[http://graphite.wikidot.com/][Graphite]] is a highly scalable real-time graphing system written in node.js. It can be scaled horizontally to provide fault tolerance and increased throughput.
+
+- Open sourced without subscriptions or fees
+- Metrics are sent over UDP, which are lightweight
+- Easy to configure
+- Can run on lower-end machines, provided they have sufficient disk space
+
+* Graphite Overview - The Cons
+
+- Complex installation requiring separate installs for multiple components (Whisper, Carbon, Web front-end)
+- Doesn't aggregate data in clustered environments (use [[https://github.com/etsy/statsd/][Statsd]] for this)
+- Metrics are sent over UDP; you can't ensure delivery
+- Graphite's Carbon backend is split into three processes to overcome limitations with paralellism in Python
+
+* Custom metrics in AppDynamics - The Pros
+
+- Metrics are guaranteed to arrive or fail with feedback
+- Metrics visualization is fully featured
+- Metrics are aggregated by default to a one-minute resolution
+- You can send events through the HTTP listener as well
+
+* Custom metrics in AppDynamics - The Cons
+
+- Requires an installed agent on each node in your network
+- Reporting a metric can be a blocking operation
+- Values in custom metrics must be whole numbers unless you use a custom monitoring extension that can take decimal values
+- The link to display custom metrics are buried in the navigation tree
+- When you send a metric, you specify a 'type', which is really more like a way to specify how data is rolled up in the graph
+
+* Custom metrics in Graphite - The Pros
+
+- Graphite doesn't require an agent
+- All metrics are sent over UDP which is typically fast and non-blocking
+- Metrics can have resolution down to one second
+- Metrics types (gauges, timers and counters) are almost self-documenting in purpose
+- Built-in mathamatical functions can be applied to metrics data flexibly
+
+* Custom metrics in Graphite - The Cons
+
+- Aggregation requires another tool if you want to report metrics from multiple machines for the same time period
+- Data is written to files on disk; you lose data if you lose the node
+
+* The Comparison
+
+*Graphite*
+
+- logically types data
+- can be a pain to set up and configure, especially on Mac OS X
+- is probably overkill if you want to keep track of a small number of metrics
+- lets you retrieve metrics data using HTTP
+
+*AppDynamics*
+
+- data types don't make logical sense
+- seems to treat custom metrics as an afterthought
+- is definitely overkill unless you are already using AppDynamics
+- lets you retrieve metrics data using RESTful endpoints
+
+* The Answer
+
+My (somewhat subjective) answer to the question _"if_you_have_access_to_AppDynamics,_do_you_still_need_Graphite_for_instrumentation?"_ would therefore be _"probably"_.
+
+I suppose it depends on your situation:
+
+Use AppDynamics if you have a license and are already using it for monitoring your infrastructure, _and_ you only want to keep track of a small number of metrics.
+
+Graphite has a place in your stack if you don't already have an AppDynamics license (or don't plan to maintain it), or if you have a very large number of metrics you would like to track.
+
+If SaaS monitoring is desirable, and you don't want to go the AppDynamics route, there are services (such as [[https://metrics.librato.com/][Librato]]) that can give you the flexibility of Graphite without the hassle of setting it up.
+
+* Links
+
+.link http://www.gluecon.com/ Gluecon
+.link https://www.appdynamics.com/ AppDynamics
+.link http://community.appdynamics.com/t5/AppDynamics-eXchange/idb-p/extensions AppDynamics Exchange
+.link http://graphite.wikidot.com/ Graphite
+.link https://github.com/etsy/statsd/ Statsd
+.link https://metrics.librato.com/ Librato

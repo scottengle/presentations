@@ -1,0 +1,10 @@
+Speaker Notes
+
+Start Present
+-------------
+cd ~/go/src/devdays/appd_vs_graphite
+$GOPATH/bin/present
+
+Open Presentation In Browser
+----------------------------
+http://127.0.0.1:3999/appd_vs_graphite.slide#1
