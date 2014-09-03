@@ -115,7 +115,7 @@ Preformatted Text (indented)
 	.image resources/gopherbw.png 75 150
 	.image resources/gopherbw.png _ 200
 
-If no arguments are provided, it uses the original size. Constrain on an axis with underscore.
+If no arguments are provided, it uses the original size. Maintain aspect ratio with an underscore.
 
 .image resources/gopherbw.png 50 150
 
