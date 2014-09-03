@@ -246,3 +246,14 @@ You can make the code area editable with -edit.
 	.play resources/testcode.go /start important OMIT/,/end important OMIT/
 
 .play resources/testcode.go /start important/,/end important/
+
+* Viewing on Go-Talks
+
+To make your slides or articles available on the web, simply:
+
+- Upload your deck or article to a github repo
+- Use a link (such as in your README) that points to
+
+	http://go-talks.appspot.com/github.com/account_name/repo_name/path/filename.slide
+
+	http://go-talks.appspot.com/github.com/account_name/repo_name/path/filename.article
