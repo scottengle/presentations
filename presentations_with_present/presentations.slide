@@ -1,0 +1,248 @@
+Presenatations with Present
+A Go tool package
+2 Sep 2014
+Tags: presentations, slides, articles, how-to
+
+Scott Engle
+Software Engineer, Pearson eCollege
+scott.engle@pearson.com
+@ScottEAtWork
+
+* The Question
+
+How do I use the Present package from Go tools?
+
+* Overview
+
+Present is a presentation package written and maintained by Google. It lets you quickly put together a slide deck for presentations that can contain executable code (among other things).
+
+.image resources/gopherbw.png 300 300
+
+* Prerequisites
+
+- Go must be installed: [[http://golang.org/doc/install]]
+
+- Mercurial
+
+	brew install mercurial
+
+- Present
+
+	go get code.google.com/p/go.tools/cmd/present
+
+* Slide Navigation
+
+Use the [Spacebar] or [<] [>] keys to navigate through the slides. On a Mac, gestures have limited functionality.
+
+* Page Structure
+
+Your presentation is written on a single .slide or .article document. Other files can be referenced in your presentation, such as external code files, html documents and resources.
+
+Slides are rendered as an animated slide deck. Articles are combined into a single-page standard article with a table of contents.
+
+.image resources/files.png _ 400
+
+* File Format
+
+The present file format consists of a header, followed by one or more content sections.
+
+	Presenatations with Present
+	A Go tool package
+	2 Sep 2014
+	Tags: presentations, slides, articles, how-to
+
+	Scott Engle
+	Software Engineer, Pearson eCollege
+	scott.engle@pearson.com
+	@ScottEAtWork
+
+	* The Question
+
+	How do I use the Present package from Go tools?
+
+* Presentation Header
+
+The presentation header is used to display information on both the first and last page.
+
+	First non-blank line is the document title
+	Document subtitle
+	Date, formatted as HH:MM D MMM YYYY (Time is optional)
+	Tags: Comma-Separated list of category tags
+	<blank line>
+	Author Name
+	Job Title, Company (any text here)
+	Email address
+	Website Links
+	Twitter Handles
+
+Everything except the document title is optional. Text associated with authors will appear on the first page, and links and Twitter handles will appear on the last page. Multiple authors should be separated by a blank line.
+
+* Slide Formatting
+
+Titles
+
+	* Title of slide (required)
+	
+Comments
+
+	// Comments (not rendered)
+
+Plain Text
+
+	Some Text
+
+* Font Formatting
+
+_Italicized_Text_
+
+	_Italicized_Text_
+
+*Bold*Text*
+
+	*Bold*Text*
+
+`Fixed`Width`Text`
+
+	`Fixed`Width`Text`	
+
+Preformatted Text (indented)
+	
+	Preformatted text
+	is indented (however you like)
+
+* Images
+
+	.image resources/gopherbw.png 75 150
+	.image resources/gopherbw.png _ 200
+
+If no arguments are provided, it uses the original size. Constrain on an axis with underscore.
+
+.image resources/gopherbw.png 50 150
+
+.image resources/gopherbw.png _ 200
+
+* Image Captions
+
+Image captions can be added to images and can include standard formatting elements.
+
+	.image resources/gopherbw.png _ 100
+	.caption _Gopher_ by [[http://www.reneefrench.com][Renée French]]
+
+.image resources/gopherbw.png _ 100
+.caption _Gopher_ by [[http://www.reneefrench.com][Renée French]]
+
+* IFrames
+
+	.iframe http://pearson.com
+	.iframe http://www.pearson.com 50 950
+	.iframe http://www.pearson.com _ 350
+
+.iframe http://pearson.com 
+.iframe http://www.pearson.com 50 950
+.iframe http://www.pearson.com _ 350	
+
+* URLs
+
+	.link http://www.pearson.com
+	.link http://www.pearson.com Optional Link Title
+
+.link http://www.pearson.com
+.link http://www.pearson.com Optional Link Title
+
+* HTML
+
+	.html resources/fireplace.html
+
+.html resources/fireplace.html
+
+* Article Formatting
+
+Files with the .article extension, in addition to the formatting available to slides, can also include:
+
+Sections
+
+	* Section Name
+
+Subsection
+
+	** Subsection Name
+
+Sub-Subsection
+
+	*** Sub-subsection Name
+
+* Code
+
+Display an entire file:
+
+	.code resources/testcode.go
+
+.code resources/testcode.go
+
+* Showing Partial Code
+
+	.code resources/testcode.go /start main/,/end main/
+
+.code resources/testcode.go /start main/,/end main/
+
+* OMIT
+
+Lines ending in OMIT are always redacted from the output.
+
+	// show a struct OMIT
+	type sample struct {
+		prop1 string `json:"property"`
+	}
+
+	// end a struct OMIT
+
+The above code will output the following:
+
+	.code resources/testcode.go /show a struct OMIT/,/end a struct OMIT/
+
+.code resources/testcode.go /show a struct OMIT/,/end a struct OMIT/
+
+* Code Highlighting
+
+Lines in code can be highlighted (`h` to toggle ?)
+
+	.code resources/testcode2.go /start main/,/end main/
+
+.code resources/testcode2.go /start main/,/end main/
+
+* Code Highlight Filtering
+
+Lines in code can have highlighting applied conditionally.
+
+	// show a highlight
+	type sample struct {
+		prop1 string `json:"property"` // HLprop
+	}
+
+	// end a highlight
+
+The HLxxx at the end of the line is only triggered when requested:
+
+	.code resources/testcode2.go /show a highlight/,/end a highlight/ HLprop
+
+.code resources/testcode2.go /show a highlight/,/end a highlight/ HLprop
+
+* Editable Code
+
+You can make the code area editable with -edit.
+
+	.code -edit resources/testcode.go
+
+.code -edit resources/testcode.go
+
+* Including Line Numbers
+	
+	.code -numbers resources/testcode.go
+
+.code -numbers resources/testcode.go
+
+* Running Code
+
+	.play resources/testcode.go /start important OMIT/,/end important OMIT/
+
+.play resources/testcode.go /start important/,/end important/
