@@ -1,0 +1,127 @@
+Docker
+An Introduction
+4 Nov 2014
+Tags: presentations, slides, docker
+
+Scott Engle
+Software Engineer, Pearson eCollege
+scott.engle@pearson.com
+@ScottEAtWork
+
+* The Question
+
+What's so special about Docker?
+
+_Docker_is_a_huge_topic,_one_day_isn't_enough_to_get_very_deep_into_it!_
+
+* Overview
+
+"Docker is an open platform for developers and sysadmins to build, ship, and run distributed applications."
+
+There are a two main components:
+
+- Docker Engine: portable, lightweight runtime and packaging tool written in Go
+- Docker Hub: SaaS for sharing applications and automating workflows
+
+* Virtual Machines
+
+Virtualized applications include:
+- (potentially small) application code
+- dependencies
+- (potentially large) guest operating system
+
+.image resources/virtual_machine.png _ 350
+
+* Docker Engine Containers
+
+Docker containers include:
+- application code
+- dependencies
+
+Containers run as an isolated process in userspace on the host operating system and share the kernel with other containers. The containers get the benefit of isolation, while also being more portable and more efficient.
+
+.image resources/docker.png _ 350
+
+* Who's Using Docker?
+
+.image resources/ebay.png 40 _
+.image resources/gilt.jpg 40 _
+.image resources/newrelic.png 40 _
+.image resources/rackspace.jpg 40 _
+.image resources/spotify.png 50 _
+.image resources/yelp.jpg 40 _
+
+* What are they using it for?
+
+- Continuous Integration
+- Continuous Delivery
+- Platform-as-a-Service
+- Distributed Application Componsition
+- Distributed Application Scaling
+
+* Why use Docker?
+
+- Faster delivery of applications: Docker streamlines the process of deploying applications to production, makes it easy to compose new containers and the engine can launch containers in under a second.
+- Easier deployments: containers are highly portable and can run almost anywhere. They also give you the ability to quickly scale up and down your application.
+- No hypervisor: the Docker engine is much lighter than hypervisor, allowing you to more efficiently use the resources of a single machine, which means you can have more containers and more apps sharing host hardware.
+
+* Installation
+
+Docker can be installed on "almost anything" (essentially "not Windows"... yet™), but because it requires the use of Linux-specific kernel features, to use it on Mac OS X, you need to install a lightweight VM. All requirements can be installed with homebrew.
+
+.code resources/install.code
+
+* OK, so what can I do with it?
+
+In my opinion, one of Docker's main strengths is the way it runs containers. Unlike virtual machines, a container is only running while the application is running. 
+
+One example might be if you have a long running process that can run in an isolated environment to perform some processing and output a result (maybe store something in a database). You could spawn that process in its own container. Once the process was finished, the container would no longer consume resources.
+
+* Examples
+
+You interact with Docker using commands, which can take a series of flags and arguments.
+
+    > docker run ubuntu:14.04 /bin/echo 'Hello world'
+
+    > docker run -i -t ubuntu /bin/bash
+
+    > docker run -d -P training/webapp python app.py
+    > docker ps -l
+    > boot2docker ip
+    > http://192.168.1.1:49155
+    > docker top
+
+_Command_Reference:_
+
+.link https://docs.docker.com/userguide/usingdocker/
+
+* Inspecting Containers
+
+You can inspect your containers to see lower level configuration details and status information.
+
+    > docker inspect [name]
+
+* Changing a Container
+
+Docker lets you quickly compose a new container, make changes to it and then push the container back up to the Hub (or a privately hosted hub). It's all very git-like.
+
+The end result is that you can compose your production image and then test it in multiple environments, before deploying the same image out to production.
+
+    > docker help commit
+
+* Summary
+
+As I said, Docker can't really be covered in one day. I've scratched the "tip of the iceberg", and I'm looking forward to diving in further.
+
+Some things I would like to try:
+
+- Set up a portable development environment
+- Create a set of microservices that could be shared or deployed (maybe something that interacts with Nibiru?)
+- Figure out how to determine where a container can be deployed (based on available resources)
+
+* Links
+
+.link https://www.docker.com
+.link http://brew.sh/
+.link http://caskroom.io/
+.link https://www.docker.com/tryit/

@@ -1,0 +1,17 @@
+> brew install docker
+
+// Error: Failure while executing:
+//        git pull -q origin refs/heads/master:refs/remotes/origin/master
+// Resolved by doing a hard fetch on homebrew
+
+> cd /usr/local
+> git reset --hard FETCH_HEAD
+
+> brew install caskroom/cask/brew-cask
+
+> brew cask install virtualbox
+
+> brew install boot2docker
+
+> boot2docker init
+> boot2docker up
