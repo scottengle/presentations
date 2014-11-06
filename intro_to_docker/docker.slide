@@ -56,7 +56,7 @@ Containers run as an isolated process in userspace on the host operating system 
 - Continuous Integration
 - Continuous Delivery
 - Platform-as-a-Service
-- Distributed Application Componsition
+- Distributed Application Composition
 - Distributed Application Scaling
 
 * Why use Docker?
@@ -67,7 +67,7 @@ Containers run as an isolated process in userspace on the host operating system 
 
 * Installation
 
-Docker can be installed on "almost anything" (essentially "not Windows"... yet™), but because it requires the use of Linux-specific kernel features, to use it on Mac OS X, you need to install a lightweight VM. All requirements can be installed with homebrew.
+Docker can be installed on "almost anything", but because it requires the use of Linux-specific kernel features, to use it on Mac OS X (and Windows), you need to install a lightweight VM. All requirements for Mac OS X can be installed with homebrew.
 
 .code resources/install.code
 
