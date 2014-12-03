@@ -1,0 +1,53 @@
+Go Web Crawler
+A Dev Day Implementation
+3 Dec 2014
+Tags: presentations, slides, go, web crawler
+
+Scott Engle
+Software Engineer, Pearson eCollege
+scott.engle@pearson.com
+@ScottEAtWork
+
+* The Objective
+
+Build a web crawler
+
+This slide deck is available on go-talks using this link:
+
+    http://go-talks.appspot.com/github.com/scottengle/presentations/go_web_crawler/wc.slide
+
+* Initial Requirements
+
+- Web Crawler
+
+- fetch goroutine gets URL from buffer if: buffer is not empty and URL is in state "new"
+- attempt to retrieve robots.txt from root of site
+- follow result handling based on https://developers.google.com/webmasters/control-crawl-index/docs/robots_txt
+- use https://github.com/temoto/robotstxt-go
+- If crawling allowed, perform GET on URL
+- parse all href attributes of <a> tags on page
+- add link to buffer if:
+- link has a proper domain name (no IP addresses)
+- domain name ends with .com, .org, .net, .edu or .us (blacklist everything else for now)
+- goroutine finishes when page is indexed
+
+* More Requirements and Bonuses
+
+- Main allows an input for starting URL, number of concurrent goroutines, max page request queue size
+- results are written to standard output with the following JSON format:
+- {"parent": "MD5 Hash of Parent URL", "id": "MD5 Hash of URL", "url": "url of link"}
+- Use a worker queue pattern
+
+Bonus:
+
+Write output to a file
+Write output to a database
+Statistical Report on domain frequency
+Support for configuration file for arguments
+Don't allow circular references (where both pages refer to each other)
+
+* Implementation
+
+Code available on Github:
+
+    https://github.com/scottengle/go-web-crawler
