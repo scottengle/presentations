@@ -1,0 +1,51 @@
+Go Web Crawler v2
+Dev Day Implementation
+7 Jan 2015
+Tags: presentations, slides, go, web crawler
+
+Scott Engle
+Software Engineer, Pearson eCollege
+scott.engle@pearson.com
+@ScottEAtWork
+
+* The Objective
+
+Continue work on the web crawler: refactors, code cleanup and additional functionality.
+
+* Slide Deck
+
+This slide deck is available on go-talks using this link:
+
+[[http://go-talks.appspot.com/github.com/scottengle/presentations/go_web_crawler/wc2.slide]]
+    
+
+* Requirements for v2
+
+- Use goquery instead of custom indexer
+- Protect shared database resources with a sync.Mutex instead of a channel
+- don't hard code start url, use user input
+- don't panic when start url is not provided - exit gracefully
+- Make the Parent/Child report more useful
+- Clear data from prior run on start
+- Make log messages less verbose
+
+* Bonus work if I can get there
+
+- Vendorize dependencies
+- Generate godoc
+
+[[http://godoc.org/]]
+
+* Results
+
+- The database connection now safely supports concurrent workers
+- Code is more stable
+- Reports can be generated in both json and tabular format, making it easy to copy and paste data into a spreadsheet, or return results as part of a rest call
+- Log messages are now under control unless verbosity is requested
+- goquery is now being used to scrape the responses
+
+* Implementation
+
+Code available on Github:
+
+[[https://github.com/scottengle/go-web-crawler]]
