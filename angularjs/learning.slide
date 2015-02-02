@@ -1,0 +1,78 @@
+AngularJS
+Learning Resources
+4 Nov 2014
+Tags: presentations, slides, angularjs, classes, resources
+
+Scott Engle
+Software Engineer, Pearson eCollege
+scott.engle@pearson.com
+@ScottEAtWork
+
+* The Question
+
+.image resources/AngularJS-large.png
+
+With full stack development on the horizon, what free resources are available to get up to speed on AngularJS?
+
+* Slide Deck
+
+This slide deck is available on go-talks using this link:
+
+.link http://go-talks.appspot.com/github.com/scottengle/presentations/angularjs/learning.slide
+
+* Documentation
+
+.image resources/AngularJS-large.png
+
+.link https://docs.angularjs.org
+
+.link https://docs.angularjs.org/guide
+
+.link https://docs.angularjs.org/api
+
+* Tutorial
+
+.image resources/phonecat-tutorial.png
+
+.link https://docs.angularjs.org/tutorial
+
+* Books
+
+.image resources/angularjs-oreilly.jpg
+.caption _AngularJS_ [[http://techbus.safaribooksonline.com/book/programming/javascript/9781449355852][_(8_Tokens_on_Safari)_]]
+
+.image resources/node-mongo-angular-webdev.jpg
+.caption _NodeJS,_MongoDB_and_AngularJS_Web_Development)_ [[http://techbus.safaribooksonline.com/book/programming/javascript/9780133844351][_(16_Tokens_on_Safari)_]]
+
+* Video
+
+.image resources/angularjs-video.png
+
+.link http://youtube.com/angularjs
+
+* (Free) Courses
+
+.image resources/codeschool.svg _ 150
+.link http://campus.codeschool.com/courses/shaping-up-with-angular-js/shaping-up-with-angular-js
+
+.image resources/codeacademy.svg _ 150
+.link http://www.codecademy.com/courses/javascript-advanced-en-2hJ3J/0/1
+
+.image resources/eggheadio.png _ 150
+.link https://egghead.io
+
+.image resources/thinksterio.png _ 150
+.link http://www.thinkster.io
+
+* Tools
+
+Offline Docs (Mac OSX and IOS)
+
+.image resources/kapeli-dash.png _ 150
+.caption _Licenses:_$19.99_
+.link http://kapeli.com/dash
+
+* Meetups
+
+.image resources/meetup-logo-2x.png
+.link http://www.meetup.com/RockyMountainAngularJS/
