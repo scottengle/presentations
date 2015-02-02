@@ -14,6 +14,8 @@ This is a repo for presentations on various topics that I've done. The following
 
 [Go Web Crawler V2](http://go-talks.appspot.com/github.com/scottengle/presentations/go_web_crawler/wc2.slide)
 
+[AngularJS Learning Resources](http://go-talks.appspot.com/github.com/scottengle/presentations/angularjs/learning.slide)
+
 ### Articles
 
 [AppDynamics vs. Graphite: Do I need both?](http://go-talks.appspot.com/github.com/scottengle/presentations/appd_vs_graphite/appd_vs_graphite.article)
